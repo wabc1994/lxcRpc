@@ -11,10 +11,11 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.UUID;
 /**
- * Demo class
+ * Demo 代理模式情况
  *
  * @author liuxiongcheng
  * @date 2018/10/13
+ *
  */
 public class ObjectProxy<T> implements InvocationHandler,IAsyncObjectProxy {
 

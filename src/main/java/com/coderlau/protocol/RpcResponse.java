@@ -4,6 +4,8 @@ package com.coderlau.protocol;
  * 使用RpcResponse封装 RPC 响应代
  */
 public class RpcResponse {
+
+
     private String requestId;
     private String error;
     private Object result;
@@ -11,6 +13,7 @@ public class RpcResponse {
     public boolean isError() {
         return error != null;
     }
+
 
     public String getRequestId() {
         return requestId;

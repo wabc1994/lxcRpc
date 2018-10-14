@@ -10,8 +10,6 @@ import java.util.List;
  * 使用RpcDecoder提供RPC解码，只需扩展Netty的ByteToMessageDecoder抽象类的decode方法即可
  */
 
-
-
 public class RpcDecoder extends ByteToMessageDecoder {
 
     private Class<?> genericClass;
