@@ -13,7 +13,7 @@
 
     <bean id="serviceDiscovery" class="com.coderlau.registry.ServiceDiscovery">
         <constructor-arg name="registryAddress" value="${registry.address}"/>
-</bean>
+    </bean>
 
     <bean id="rpcClient" class="com.coderlau.client.RpcClient">
         <constructor-arg name="serviceDiscovery" ref="serviceDiscovery"/>

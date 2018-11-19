@@ -7,17 +7,9 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.coderlau.*"/>
+    <context:component-scan base-package="com.lxcrpc.test.server"/>
 
     <context:property-placeholder location="classpath:rpc.properties"/>
-
-    <bean id="serviceDiscovery" class="com.coderlau.registry.ServiceDiscovery">
-        <constructor-arg name="registryAddress" value="${registry.address}"/>
-</bean>
-
-    <bean id="rpcClient" class="com.coderlau.client.RpcClient">
-        <constructor-arg name="serviceDiscovery" ref="serviceDiscovery"/>
-    </bean>
 
     <bean id="serviceRegistry" class="com.coderlau.registry.ServiceRegistry">
         <constructor-arg name="registryAddress" value="${registry.address}"/>
