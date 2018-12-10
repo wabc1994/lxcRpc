@@ -30,6 +30,7 @@ public class ServiceDiscovery {
     public ServiceDiscovery( String registryAddress) {
         this.registryAddress = registryAddress;
         zooKeeper=connectServer();
+        // 使用之前都要进行判断是否为空处理
         if(zooKeeper!=null){
             watchNode(zooKeeper);
         }
@@ -46,7 +47,7 @@ public class ServiceDiscovery {
                 }
             });
             List<String> dataList =new ArrayList<>();
-            for(String node:nodeList){
+                for(String node:nodeList){
                 byte[] bytes = zooKeeper.getData(Constant.ZK_REGISTRY_PATH+"/"+node,false,null);
             }
         }catch (InterruptedException | KeeperException e){
@@ -56,10 +57,12 @@ public class ServiceDiscovery {
 
 
     private ZooKeeper connectServer() {
+        // 像这样的代码都是这样来写法， 创建并返回某个东西， 一开始先定义一个空的东西, 然后执行函数进行创建，
         ZooKeeper zk= null;
         try{
+            // 在主程序当中创建一个zk , 需要依赖参数(资源或条件),
             zk =new ZooKeeper(registryAddress, Constant.ZK_SESSION_TIMEOUT, new Watcher() {
-                @Override
+                    @Override
                 public void process(WatchedEvent watchedEvent) {
                      if(watchedEvent.getState()==Event.KeeperState.SyncConnected){
                          latch.countDown();
